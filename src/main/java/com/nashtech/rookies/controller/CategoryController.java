@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.Set;
@@ -24,26 +23,26 @@ public class CategoryController {
     }
 
     @GetMapping(path = "{id}")
-    public ResponseEntity<Object> findByIdCategory(@PathVariable("id") Long id){
+    public ResponseEntity<Object> findByIdCategory(@PathVariable("id") Long id) {
         CategoryDto categoryDto = categoryService.findByIdCategory(id);
         return ResponseEntity.status(HttpStatus.OK).body(categoryDto);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createCategory(@RequestBody @Valid CategoryDto categoryDto){
+    public void createCategory(@RequestBody @Valid CategoryDto categoryDto) {
         categoryService.createCategory(categoryDto);
     }
 
     @PutMapping(path = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateCategory(@RequestBody @Valid CategoryDto categoryDto,
-                                                 @PathVariable("id") Long id){
+                               @PathVariable("id") Long id) {
         categoryService.updateCategory(categoryDto, id);
     }
 
     @DeleteMapping(path = "{id}")
-    public void deleteCategory(@PathVariable("id") Long id){
+    public void deleteCategory(@PathVariable("id") Long id) {
         categoryService.deleteCategory(id);
     }
 
