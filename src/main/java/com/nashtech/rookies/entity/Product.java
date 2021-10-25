@@ -7,6 +7,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "product")
@@ -52,4 +53,9 @@ public class Product {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Category category;
+
+    @OneToMany(mappedBy = "product")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<Rate> rates;
 }

@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CategoryDto {
-
     private Long id;
 
     @NotNull(message = "name is null")

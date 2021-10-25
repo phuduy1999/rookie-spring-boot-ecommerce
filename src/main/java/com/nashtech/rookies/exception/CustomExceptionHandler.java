@@ -14,8 +14,13 @@ public class CustomExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
-    @ExceptionHandler(DuplicateRecordException.class)
-    public ResponseEntity<String> handlerDuplicateRecordException(DuplicateRecordException e) {
+    @ExceptionHandler(UniqueConstraintException.class)
+    public ResponseEntity<String> handlerUniqueConstraintException(UniqueConstraintException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler(ForeignKeyException.class)
+    public ResponseEntity<String> handlerForeignKeyException(ForeignKeyException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 
@@ -30,6 +35,11 @@ public class CustomExceptionHandler {
         if (e.getBindingResult().hasErrors())
             errorMessage = e.getBindingResult().getAllErrors().get(0).getDefaultMessage();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
+    }
+
+    @ExceptionHandler(StorageFileNotFoundException.class)
+    public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
+        return ResponseEntity.notFound().build();
     }
 
     @ExceptionHandler(Exception.class)
