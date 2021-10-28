@@ -1,39 +1,55 @@
 package com.nashtech.rookies.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.Set;
+import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
-@Table(name = "category")
-@Data
-@Builder
+@Table(name = "category", uniqueConstraints = {@UniqueConstraint(columnNames = {"name"})},
+        indexes = {@Index(name = "category_name_index", columnList = "name", unique = true)})
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @SequenceGenerator(
+            name = "category_sequence",
+            sequenceName = "category_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "category_sequence"
+    )
     private Long id;
 
-    @Column(name = "name", unique = true)
-    @NotNull
+    @NotBlank
     private String name;
 
-    @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "category")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    private Set<Product> product;
+    @ManyToOne
+    @JoinColumn(name = "parent_category_id")
+    private Category category; //parent category
 
-    public Category(Long id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Category> categories; //sub category
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    private List<Product> products;
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
