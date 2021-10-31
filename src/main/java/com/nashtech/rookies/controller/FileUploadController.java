@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import java.io.IOException;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(path = UriPathUtil.uri)
@@ -37,10 +38,10 @@ public class FileUploadController {
         return ResponseEntity.ok().body(file);
     }
 
-    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<Object> handleFileUpload(@RequestPart("file") MultipartFile file, @RequestPart("category") CategoryDto categoryDto) {
         String destinationFileName = storageService.store(file); // save db
-        return ResponseEntity.ok().body(destinationFileName+categoryDto.toString());
+        return ResponseEntity.ok().body(destinationFileName + categoryDto.toString());
     }
 
 }

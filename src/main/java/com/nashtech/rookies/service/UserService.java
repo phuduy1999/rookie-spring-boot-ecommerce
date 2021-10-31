@@ -2,17 +2,24 @@ package com.nashtech.rookies.service;
 
 import com.nashtech.rookies.dto.RateDto;
 import com.nashtech.rookies.dto.UserDto;
+import com.nashtech.rookies.entity.RoleName;
 
+import java.util.List;
 import java.util.Set;
 
 public interface UserService {
-    public Set<UserDto> findAllUser();
+    List<UserDto> findAllUser();
 
-    public RateDto findByIdUser(Long id);
+    UserDto findUserByEmail(String email);
 
-    public void createUser(UserDto userDto);
+    RateDto findByIdUser(Long id);
 
-    public void updateUser(UserDto userDto, Long id);
+    void createUser(UserDto userDto);
+//
+//    void updateUser(UserDto userDto, Long id);
+//
+//    void deleteUser(Long id);
 
-    public void deleteUser(Long id);
+    void addRoleToUser(String email, RoleName roleName);
+
 }

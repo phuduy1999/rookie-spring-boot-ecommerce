@@ -1,18 +1,17 @@
 package com.nashtech.rookies.service;
 
-import com.nashtech.rookies.dto.CategoryDto;
 import com.nashtech.rookies.dto.RateDto;
 
 import java.util.Set;
 
 public interface RateService {
-    public Set<RateDto> findAllRate();
+    Set<RateDto> findAllRate();
 
-    public RateDto findByIdRate(Long id);
+    RateDto findByIdRate(Long id);
 
-    public void createRate(RateDto rateDto);
+    void createRate(RateDto rateDto);
 
-    public void updateRate(RateDto rateDto, Long id);
+    void updateRate(RateDto rateDto, Long id);
 
-    public void deleteRate(Long id);
+    void deleteRate(Long id);
 }

@@ -5,16 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import javax.validation.constraints.NotBlank;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserDto {
+public class BrandDto {
     private Long id;
-    private String email;
-    private String password;
-    private List<RoleDto> roles;
-    private Short status;
+
+    @NotBlank
+    private String name;
 }

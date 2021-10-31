@@ -1,6 +1,5 @@
 package com.nashtech.rookies.controller;
 
-import com.nashtech.rookies.dto.CategoryDto;
 import com.nashtech.rookies.dto.ProductDto;
 import com.nashtech.rookies.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.util.Set;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequiredArgsConstructor  //annotation trigger autowired final variable
 @RestController
 @RequestMapping(path = "api/v1/products")
@@ -31,10 +31,10 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(productDto);
     }
 
-    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     @ResponseStatus(HttpStatus.CREATED)
     public void createProduct(@RequestPart("product") @Valid ProductDto productDto,
-                              @RequestPart("file") MultipartFile file){
+                              @RequestPart("file") MultipartFile file) {
 
     }
 }

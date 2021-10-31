@@ -5,7 +5,7 @@ import com.nashtech.rookies.dto.ProductDto;
 import java.util.Set;
 
 public interface ProductService {
-    public Set<ProductDto> findAllProduct();
+    Set<ProductDto> findAllProduct();
 
-    public ProductDto findByIdProduct(String id);
+    ProductDto findByIdProduct(String id);
 }

@@ -3,8 +3,8 @@ package com.nashtech.rookies.service.impl;
 import com.nashtech.rookies.dto.CategoryDto;
 import com.nashtech.rookies.entity.Category;
 import com.nashtech.rookies.exception.ForeignKeyException;
-import com.nashtech.rookies.exception.UniqueConstraintException;
 import com.nashtech.rookies.exception.NotFoundException;
+import com.nashtech.rookies.exception.UniqueConstraintException;
 import com.nashtech.rookies.repository.CategoryRepository;
 import com.nashtech.rookies.repository.ProductRepository;
 import com.nashtech.rookies.service.CategoryService;
@@ -60,7 +60,7 @@ public class CategoryServiceImpl implements CategoryService {
                 .orElseThrow(() -> new NotFoundException(
                         "category with id " + id + " does not exists"
                 ));
-        if(categoryRepository.existsCategoryByIdNotAndName(id, categoryDto.getName())){
+        if (categoryRepository.existsCategoryByIdNotAndName(id, categoryDto.getName())) {
             throw new UniqueConstraintException("name taken");
         }
         Category categoryMap = MapperUtil.mapOne(categoryDto, Category.class);
@@ -74,7 +74,7 @@ public class CategoryServiceImpl implements CategoryService {
         if (!exists) {
             throw new NotFoundException("category with id " + id + " does not exists");
         }
-        if(productRepository.existsProductByCategoryId(id)){
+        if (productRepository.existsProductByCategoryId(id)) {
             throw new ForeignKeyException("category with id " + id + " has products");
         }
         categoryRepository.deleteById(id);

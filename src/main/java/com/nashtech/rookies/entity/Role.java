@@ -39,6 +39,11 @@ public class Role {
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
 
+    public Role(Long id, RoleName roleName) {
+        this.id = id;
+        this.roleName = roleName;
+    }
+
     @Override
     public String toString() {
         return "Role{" +

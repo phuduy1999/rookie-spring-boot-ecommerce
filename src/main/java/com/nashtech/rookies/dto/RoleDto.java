@@ -1,20 +1,20 @@
 package com.nashtech.rookies.dto;
 
+import com.nashtech.rookies.entity.RoleName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserDto {
+public class RoleDto {
     private Long id;
-    private String email;
-    private String password;
-    private List<RoleDto> roles;
-    private Short status;
+
+    @NotNull
+    private RoleName roleName;
 }

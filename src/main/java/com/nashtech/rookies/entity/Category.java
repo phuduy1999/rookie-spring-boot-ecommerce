@@ -38,7 +38,7 @@ public class Category {
     @JoinColumn(name = "parent_category_id")
     private Category category; //parent category
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Category> categories; //sub category
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Set;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequiredArgsConstructor  //annotation trigger autowired final variable
 @RestController
 @RequestMapping(path = "api/v1/categories")
