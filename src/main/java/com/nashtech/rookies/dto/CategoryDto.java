@@ -1,21 +1,20 @@
 package com.nashtech.rookies.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class CategoryDto {
     private Long id;
 
-    @NotNull(message = "name is null")
-    @NotEmpty(message = "name is empty")
+    @NotBlank
     private String name;
 
-    private String description;
+    private Long parentId;
 }

@@ -13,8 +13,12 @@ import java.util.List;
 @Setter
 public class UserDto {
     private Long id;
+
     private String email;
+
     private String password;
+
     private List<RoleDto> roles;
+
     private Short status;
 }

@@ -1,6 +1,7 @@
 package com.nashtech.rookies.controller;
 
 import com.nashtech.rookies.dto.CategoryDto;
+import com.nashtech.rookies.dto.ResponseDto;
 import com.nashtech.rookies.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -47,6 +48,15 @@ public class CategoryController {
         categoryService.deleteCategory(id);
     }
 
+    @GetMapping("/parent")
+    public ResponseEntity<ResponseDto> retrieveParentCategory() {
+        return ResponseEntity.ok(categoryService.retrieveParentCategory());
+    }
+
+    @GetMapping("/sub/{parentId}")
+    public ResponseEntity<ResponseDto> retrieveSubCategory(@PathVariable("parentId") Long parentId) {
+        return ResponseEntity.ok(categoryService.retrieveSubCategory(parentId));
+    }
 
 }
 

@@ -16,10 +16,18 @@ import java.util.List;
 @Setter
 public class CustomerDto {
     private Long userId;
+
+    private UserDto user;
+
     private LocalDateTime createDate;
+
     private String name;
+
     private String phoneNumber;
+
     private LocalDate dob;
+
     private List<Address> addresses;
+
     private Boolean sex;
 }

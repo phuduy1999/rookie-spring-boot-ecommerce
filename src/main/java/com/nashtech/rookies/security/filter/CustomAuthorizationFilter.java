@@ -1,4 +1,4 @@
-package com.nashtech.rookies.filter;
+package com.nashtech.rookies.security.filter;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

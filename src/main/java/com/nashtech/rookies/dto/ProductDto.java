@@ -1,29 +1,55 @@
 package com.nashtech.rookies.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.nashtech.rookies.entity.Brand;
+import com.nashtech.rookies.entity.Category;
+import com.nashtech.rookies.entity.ProductDetail;
+import lombok.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class ProductDto {
-    private String id;
+    private Long id;
 
-    @NotNull(message = "name is null")
+    @NotBlank
     private String name;
 
     private String description;
 
-    @NotNull(message = "price is null")
-    @DecimalMin(value = "0", message = "price must be not below 0")
-    private float price;
+    private String model;
 
-    private List<String> imageUrls;
+    private String size;
 
-    private CategoryDto category; //nice work
+    private Float weight;
+
+    private String material;
+
+    private short warranty;
+
+    private String imageUrl;
+
+    private LocalDateTime createDate;
+
+    private LocalDateTime updateDate;
+
+    @NotNull
+    private Long categoryId;
+    private CategoryDto category;
+
+    @NotNull
+    private Long brandId;
+    private BrandDto brand;
+
+    @Valid
+    @NotEmpty
+    private List<ProductDetailDto> productDetails;
 }

@@ -11,9 +11,14 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class RateDto {
     private Long id;
+
     private int rating;
+
     private String rateReview;
+
     private LocalDate dateCreated;
+
     private UserDto user;
+
     private ProductDto product;
 }
